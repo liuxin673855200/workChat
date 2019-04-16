@@ -1,0 +1,7 @@
+<!--pages/login/login.wxml-->
+<view  class='listT'>
+  <image src='https://s.chedianzhang.com/res/backstage/0119Revision/images/wechat/31fa96cc10cde572f98fa74209e9971.png' class='unmaint'></image>
+  <view class='callphone'>微信手机暂未授权</view>
+  <button open-type="getPhoneNumber" lang="zh_CN" bindgetphonenumber="bindgetphonenumber"
+  class='phoneBtn'>授权手机查看维修记录</button>
+</view>

@@ -1,0 +1,171 @@
+.rong-chat{
+  position: absolute;
+  width: 100%;
+  top: 0;
+  bottom: 0;
+}
+
+.rong-messages{
+  position: absolute;
+  top: 0;
+  bottom: 200rpx;
+}
+
+.rong-editor{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 15rpx;
+  border-top: 1px solid #CCC;
+  background-color: #FFF;
+  box-sizing: border-box;
+}
+
+.rong-editor-input{
+  height: 58rpx;
+  border-bottom:1px solid #CCC;
+  display: inline-block;
+  margin-top: 6rpx;
+  position: absolute;
+  left: 90rpx;
+  right: 194rpx;
+}
+
+.rong-editor-input:focus{
+  border-bottom: 1px solid red;
+}
+
+.rong-editor-btn{
+  margin-right: 20rpx;
+  margin-top: 4rpx;
+}
+.rong-editor-btn-voice{
+  background-image: url("https://rongcloud-image.cn.ronghub.com/o_1chk2kfkpr8pdm31j56t49fg1a.png?e=2147483647&token=livk5rb3__JZjCtEiMxXpQ8QscLxbNLehwhHySnX:7JEmLgDyTGVPaqFkfv1XlIIvKTY=");
+  float: left;
+}
+
+.rong-editor-btn-emoji{
+   background-image: url("https://rongcloud-image.cn.ronghub.com/o_1chk2kfkp4mt946187t1tu6fo517.png?e=2147483647&token=livk5rb3__JZjCtEiMxXpQ8QscLxbNLehwhHySnX:M3ESBWxl56cSKODXRIEfZ2lEyJk=");
+   float: right;
+}
+
+.rong-editor-btn-more{
+   background-image: url("https://rongcloud-image.cn.ronghub.com/o_1chk2kfkpfcj1glterl29mi6618.png?e=2147483647&token=CddrKW5AbOMQaDRwc3ReDNvo3-sL_SO1fSUBKV3H:Y0nRdX5kK_T2YWxIWsoA236DCL4="); 
+  float: right;
+}
+
+.rong-editor-btn-emojisent{
+  float: right; 
+  font-size:15px;
+  background: #1BA3FC;
+  border-radius: 6rpx;
+  color: #FFF;
+  margin-top: 8rpx;
+  margin-right: 20rpx;
+  padding: 6rpx 2rpx;
+}
+
+.rong-editor-btn-keyboard{
+  background-image: url("https://rongcloud-image.cn.ronghub.com/o_1chk2kfkpso212071oevn0e3fe19.png?e=2147483647&token=livk5rb3__JZjCtEiMxXpQ8QscLxbNLehwhHySnX:QIOf02NbmqvFMlOwcMXZAXbGDVU=");
+  float: left;
+}
+
+.rong-editor-record{
+  border: 1px solid #CCC;
+  border-radius: 5rpx;
+  text-align: center;
+  color: #8E969F;
+  box-sizing: border-box;
+  line-height: 55rpx;
+}
+
+/* 模块  */
+.rong-voice-recording{
+  position: absolute;
+  top: 35%;
+  left: 38%;
+  background-color: #333;
+  background-size: contain;
+  height: 200rpx;
+  width: 200rpx;
+  opacity: 0.8;
+  border-radius: 10rpx;
+  padding: 10rpx;
+  background-image: url("https://rongcloud-image.cn.ronghub.com/o_1chlab8nk1gp014f11vdu5u11v74l.gif?e=2147483647&token=CddrKW5AbOMQaDRwc3ReDNvo3-sL_SO1fSUBKV3H:a9LUbvDq5PbI5H5-MtJP49SFGdE=");
+}
+
+.rong-editor-emojis,.rong-editor-more{
+  background-color: #FFF;
+  height: 210px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+}
+
+.rong-editor-emoji{
+  width:60rpx;
+  height:60rpx;
+  display:inline-block;
+  text-align:center;
+  margin:7px;
+  font-size:30px;
+}
+
+.rong-emojis-swiper, .rong-modules-swiper{
+  height: 185px;
+}
+
+.rong-adapter-box{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background:#FFF;
+}
+
+.rong-editor-modules{
+  height: 60px;
+  width: 60px;
+  border: 1px solid #d2d2d4;
+  border-radius: 15px;
+  background-color: #fff;
+  padding: 10px 14px 10px 9px;
+  box-sizing: border-box;
+  margin: 20px;
+  float: left;
+}
+
+.rong-editor-module{
+  height: 40px;
+  width: 40px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+.rong-editor-module-image{
+  background-image: url('https://rongcloud-image.cn.ronghub.com/FsB5XchwrDjI3yt2MiJODkqbxg7a?e=2147483647&token=livk5rb3__JZjCtEiMxXpQ8QscLxbNLehwhHySnX:2L0FW-2g8vuK6-8tL6DYB9x7_mw=');
+}
+
+.rong-editor-module-music{
+  background-image: url('https://rongcloud-image.cn.ronghub.com/o_1chuu8j7g15bm3qbpvc1e891tmog.png?e=2147483647&token=CddrKW5AbOMQaDRwc3ReDNvo3-sL_SO1fSUBKV3H:vSoaCmGeTC7GIpsVzWmR6zSRnaI=');
+  height: 35px;
+}
+
+/* 2019.4.15 */
+.rong-short-card{
+      width: 100%;
+      height: 90rpx;
+}
+button.btn-short{
+  margin-left: 30rpx;
+  padding-left: 0;
+  padding-right:0;
+  display:inline-block;
+  width:170rpx;
+  height: 70rpx;
+  line-height:70rpx;
+  border:1rpx solid #c2c2c2;
+  border-radius: 34rpx;
+  font-size: 32rpx;
+  background-color:#FFF;
+}

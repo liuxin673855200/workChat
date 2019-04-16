@@ -1,0 +1,41 @@
+<!--pages/conversation/components/message/other.wxml-->
+<view bindtap='toOtherView' class='content' wx:if="{{cardType==0}}">
+      <view class='title'>【维修单】</view>
+      <view class='box'>
+          <view class='box1'>
+              <view class='car-number left'>苏A12345</view>  
+              <view class="brand left">奥迪123245</view>    
+          </view>  
+          <view class='status'>已进厂</view>
+      </view>
+</view>
+<view bindtap='toOtherView' class='content' wx:if="{{cardType==1}}">
+      <view class='title'>【车辆检测报告】</view>
+      <view class='box'>
+          <view class='box1'>
+              <view class='car-number left'>苏A12345</view>  
+              <view class="brand left">奥迪123245</view>    
+          </view>  
+          <view class='box2'>车辆检测报告已出</view>
+      </view>
+</view>
+<view bindtap='toOtherView' class='content' wx:if="{{cardType==2}}">
+      <view class='title'>【保养项目】</view>
+      <view class='box'>
+          <view class='box1'>
+              <view class='car-number left'>苏A12345</view>  
+              <view class="brand left">奥迪123245</view>    
+          </view>  
+          <view class='box2'>推荐保养方案</view>
+      </view>
+</view>
+<view bindtap='toOtherView' class='content' wx:if="{{cardType==3}}">
+      <view class='title'>【违章信息】</view>
+      <view class='box'>
+          <view class='box1'>
+              <view class='car-number left'>苏A12345</view>  
+              <view class="brand left">奥迪123245</view>    
+          </view>  
+          <view class='box2'>没有违章</view>
+      </view>
+</view>
