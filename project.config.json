@@ -1,20 +1,24 @@
 {
-	"description": "项目配置文件。",
+	"description": "项目配置文件",
+	"packOptions": {
+		"ignore": []
+	},
 	"setting": {
 		"urlCheck": false,
 		"es6": true,
 		"postcss": true,
 		"minified": false,
-		"newFeature": true
+		"newFeature": true,
+		"autoAudits": false
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.1.1",
-	"appid": "wx7a842a98c6a24bc2",
+	"appid": "wx0d0c2dfe396db5d7",
 	"projectname": "rongcloud-miniapp",
-	"svr": "/",
-	"client": "/",
-	"qcloudRoot": "/",
-	"miniprogramRoot": "/",
+	"debugOptions": {
+		"hidedInDevtools": []
+	},
+	"scripts": {},
 	"condition": {
 		"search": {
 			"current": -1,
@@ -22,6 +26,13 @@
 		},
 		"conversation": {
 			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
 			"list": []
 		},
 		"miniprogram": {
