@@ -45,6 +45,10 @@
       <swiper-item>
         <view class='rong-editor-modules'>
           <view class='rong-editor-module rong-editor-module-image' bindtap='sendImage'></view>
+        </view> 
+
+        <view class='rong-editor-modules'>
+          <view class='rong-editor-module rong-editor-module-images' bindtap='sendMap'></view>
         </view>
 
         <view class='rong-editor-modules'>

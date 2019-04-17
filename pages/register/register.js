@@ -24,7 +24,7 @@ Page({
       //用户按了允许授权按钮
         wx.getUserInfo({
           success: res => {
-            console.log(res);
+            console.log("getUserInfo",res);
             // wx.setStorageSync('power', true)
             wx.request({
               url: baseUrl + 'register',
@@ -39,7 +39,7 @@ Page({
                 'content-type': 'application/x-www-form-urlencoded' // 默认值  
               },
               success: res => {
-                console.log(res)
+                console.log("request",res)
 
                     wx.redirectTo({
                       url: '../login/login'

@@ -106,11 +106,13 @@ Page({
     };
 
     let url = './chat?type={type}&targetId={targetId}&title={title}';
+    console.log('原地址：', url)
     url = utils.tplEngine(url, {
       type,
       targetId,
       title: target.name
     });
+    console.log('处理后', url)
     wx.navigateTo({
       url: url,
     });
