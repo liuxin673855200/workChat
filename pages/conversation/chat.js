@@ -377,6 +377,31 @@ const sendMusic = (context) => {
   });
 };
 
+/** 发送当前地理位置 */
+const sendMap = (context) => {
+  let { content, type, targetId, messageList } = context.data;
+  wx.chooseLocation({
+    success(res) {
+      console.log('位置', res, '信息', {
+        type,
+        targetId,
+        content : res
+      })
+      Message.sendText({
+        type,
+        targetId,
+        content : res
+      }).then(message => {
+        messageList.push(message);
+        context.setData({
+          messageList,
+          toView: message.uId
+        });
+      });
+    }
+  })
+};
+
 const playVoice = (context, event) => {
   let voiceComponent = event.detail;
   let { playingVoice } = context.data;
@@ -495,6 +520,9 @@ Page({
   },
   sendMusic: function () {
     sendMusic(this);
+  },
+  sendMap: function(){
+    sendMap(this);
   },
   showVoice: function(){
     showVoice(this);
