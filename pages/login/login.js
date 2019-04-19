@@ -8,15 +8,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    isFalse: false,
-    markers: [{
-      iconPath: '/resources/others.png',
-      id: 0,
-      latitude: 39.96872,
-      longitude: 116.32977,
-      width: 50,
-      height: 50
-    }],
+    
     polyline: [{
       points: [{
         longitude: 113.3245211,

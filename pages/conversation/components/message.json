@@ -5,6 +5,7 @@
     "ImageMessage": "./message/image",
     "VoiceMessage": "./message/voice",
     "MusicMessage": "./message/music",
-    "CardMessage": "./message/card"
+    "CardMessage": "./message/card",
+    "MapMessage": "./message/map"
   }
 }

@@ -288,6 +288,10 @@ let sendMessage = (type, targetId, message) => {
       music: () => {
         let {name, url, author, poster} = message;
         return new RongIMClient.RegisterMessage.MusicMessage({ name, url, author, poster, user});
+      },
+      map: () => {
+        let {content} = message;
+        return new RongIMLib.TextMessage({ content, user });
       }
     };
 
@@ -347,6 +351,15 @@ Message.sendMusic = (params) => {
   let { type, targetId } = params;
   let content = utils.extend({ type: 'music' }, getMusic());
   return sendMessage(type, targetId, content);
+};
+
+
+Message.sendMap = (params) => {
+  let { type, targetId, content } = params;
+  return sendMessage(type, targetId, {
+    type: 'map',
+    content,
+  })
 };
 
 // params.type 
@@ -447,6 +460,9 @@ let bindUserInfo = (list) => {
     }
     if (messageType == 'MusicMessage') {
       content = '[音乐]';
+    }
+    if (messageType == 'MapMessage') {
+      content = '[地图]';
     }
     return content;
   };

@@ -1,0 +1,12 @@
+<view bindtap='toOpenMap' class='mapcontent'>
+      <view class='title'>  地图地址  </view>
+      <map
+        class="map"
+        longitude="116.32977"
+        latitude="39.96872"
+        markers="{{markers}}"
+        enable-zoom= "{{isFalse}}"
+        enable-scroll = "{{isFalse}}"
+        style="width: 100%; height: 120px;"
+    ></map>
+</view>

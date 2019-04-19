@@ -10,6 +10,7 @@
         <VoiceMessage wx:if = '{{message.name == "VoiceMessage"}}'  message='{{message}}' bindonplay='onPlayVoice'></VoiceMessage> 
         <MusicMessage wx:if = '{{message.name == "MusicMessage"}}'  message='{{message}}' bindonplaymusic='onPlayMusic' bindonstopmusic='onMusicStop'></MusicMessage> 
         <CardMessage wx:if = '{{message.name == "CardMessage"}}'  message='{{message}}' bindtootherpage='toOtherPage'></CardMessage> 
+        <MapMessage wx:if = '{{message.name == "MapMessage"}}'  message='{{message}}' bindOpenMap='opemMap'></MapMessage> 
       </view>
 
 

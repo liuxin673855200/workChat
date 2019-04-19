@@ -1,0 +1,9 @@
+/* pages/conversation/components/message/other.wxss */
+.mapcontent{
+  width: 400rpx;
+  height: 204rpx;
+  font-size: 26rpx;
+}
+.title{
+  height: 40rpx;
+}

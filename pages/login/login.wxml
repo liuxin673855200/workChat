@@ -10,19 +10,6 @@
 
   <button bindtap="wxLocal3">朋友打开我的位置</button>
 
-  <map
-  id="map"
-  longitude="116.32977"
-  latitude="39.96872"
-  bindcontroltap="controltap"
-  markers="{{markers}}"
-  enable-zoom= "{{isFalse}}"
-  enable-scroll = "{{isFalse}}"
-  bindmarkertap="markertap"
-  bindregionchange="regionchange"
-  style="width: 100%; height: 120px;"
-></map>
-
   <!-- <map
   id="map"
   longitude="116.32977"

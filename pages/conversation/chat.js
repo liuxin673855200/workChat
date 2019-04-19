@@ -380,6 +380,7 @@ const sendMusic = (context) => {
 /** 发送当前地理位置 */
 const sendMap = (context) => {
   let { content, type, targetId, messageList } = context.data;
+
   wx.chooseLocation({
     success(res) {
       console.log('位置', res, '信息', {
@@ -387,7 +388,7 @@ const sendMap = (context) => {
         targetId,
         content : res
       })
-      Message.sendText({
+      Message.sendMap({
         type,
         targetId,
         content : res

@@ -21,6 +21,9 @@ Component({
     },
      './message/card': {
       type: 'child'
+    },
+    './message/map': {
+      type: 'child'
     }
   },
   /**
@@ -49,6 +52,10 @@ Component({
     toOtherPage:function(event){
       console.log("message.js")
       this.triggerEvent('tootherpage', event.detail)
+    },
+    opemMap:function(event){
+      console.log("message.js")
+      this.triggerEvent('opemMap', event.detail)
     }
   }
 })
