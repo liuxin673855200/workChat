@@ -424,6 +424,10 @@ const playVoice = (context, event) => {
   });
 };
 
+const openMap = (context, event) => {
+  console.log(context, event)
+}
+
 const playMusic = (context, event) => {
   let newMusicComponent = event.detail;
   let { playingMusicComponent, messageList } = context.data;
@@ -605,6 +609,9 @@ uId :"B9VG-HCEC-M1S5-J8RA",
   },
   onPlayMusic: function (event){
     playMusic(this, event);
+  },
+  openMap: function (event){
+    openMap(this, event);
   },
   onMusicStop: function(event){
     stopMusic(this, event);

@@ -291,7 +291,7 @@ let sendMessage = (type, targetId, message) => {
       },
       map: () => {
         let {content} = message;
-        return new RongIMLib.TextMessage({ content, user });
+        return new RongIMLib.MapMessage({ content, user });
       }
     };
 

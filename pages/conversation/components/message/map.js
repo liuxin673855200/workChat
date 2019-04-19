@@ -13,17 +13,27 @@ Component({
   data: {
     isFalse: false,
     markers: [{
-      iconPath: '/resources/others.png',
-      id: 0,
+      //iconPath: '/resources/others.png',
+      //id: 0,
       latitude: 39.96872,
       longitude: 116.32977,
-      width: 50,
-      height: 50
+      //width: 50,
+      //height: 50
     }],
   },
   methods:{
-    opemMap: function(){
-      
+    openMap: function(){
+      let { message } = this.properties;
+      console.log('openMap')
+      console.log(message)
+        console.log('openMap')
+        wx.openLocation({
+
+          latitude: 22.53332,
+          
+          longitude: 113.93041,
+          
+          })
     },
     toOtherView: function(event) {
       // console.log("1")

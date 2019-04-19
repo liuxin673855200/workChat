@@ -2013,7 +2013,7 @@ module.exports = (function (wx) {
         RongIMClient._dataAccessProvider.init(appKey);
         RongIMClient.MessageParams = {
           TextMessage: { objectName: "RC:TxtMsg", msgTag: new RongIMLib.MessageTag(true, true) },
-          
+          MapMessage: { objectName: "RC:MapMsg", msgTag: new RongIMLib.MessageTag(true, true) },
           ImageMessage: { objectName: "RC:ImgMsg", msgTag: new RongIMLib.MessageTag(true, true) },
           DiscussionNotificationMessage: { objectName: "RC:DizNtf", msgTag: new RongIMLib.MessageTag(true, true) },
           VoiceMessage: { objectName: "RC:VcMsg", msgTag: new RongIMLib.MessageTag(true, true) },
@@ -2061,6 +2061,7 @@ module.exports = (function (wx) {
         // }
         RongIMClient.MessageType = {
           TextMessage: "TextMessage",
+          MapMessage: "MapMessage",
           ImageMessage: "ImageMessage",
           DiscussionNotificationMessage: "DiscussionNotificationMessage",
           VoiceMessage: "VoiceMessage",
@@ -5794,6 +5795,7 @@ module.exports = (function (wx) {
   //objectname映射
   var typeMapping = {
     "RC:TxtMsg": "TextMessage",
+    "RC:MapMsg": "MapMessage",
     "RC:ImgMsg": "ImageMessage",
     "RC:VcMsg": "VoiceMessage",
     "RC:ImgTextMsg": "RichContentMessage",
@@ -6567,6 +6569,32 @@ module.exports = (function (wx) {
       return TextMessage;
     }());
     RongIMLib.TextMessage = TextMessage;
+    //地图数据类型
+    var MapMessage = (function () {
+      function MapMessage(message) {
+        this.messageName = "MapMessage";
+        if (arguments.length == 0) {
+          throw new Error("Can not instantiate with empty parameters, use obtain method instead -> MapMessage.");
+        }
+        this.content = message.content;
+        this.extra = message.extra;
+        if (message.user) {
+          this.user = message.user;
+        }
+        if (message.mentionedInfo) {
+          this.mentionedInfo = message.mentionedInfo;
+        }
+      }
+      MapMessage.obtain = function (text) {
+        return new MapMessage({ extra: "", content: text });
+      };
+      MapMessage.prototype.encode = function () {
+        return JSON.stringify(RongIMLib.ModelUtil.modelClone(this));
+      };
+      return MapMessage;
+    }());
+  RongIMLib.MapMessage = MapMessage;
+
     var TypingStatusMessage = (function () {
       function TypingStatusMessage(message) {
         this.messageName = "TypingStatusMessage";

@@ -53,9 +53,9 @@ Component({
       console.log("message.js")
       this.triggerEvent('tootherpage', event.detail)
     },
-    opemMap:function(event){
+    openMap:function(event){
       console.log("message.js")
-      this.triggerEvent('opemMap', event.detail)
+      this.triggerEvent('openMap', event.detail)
     }
   }
 })
