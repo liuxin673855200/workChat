@@ -5,7 +5,7 @@
   <button open-type="getPhoneNumber" lang="zh_CN" bindgetphonenumber="bindgetphonenumber"
   class='phoneBtn'>授权手机查看维修记录</button>
 
-   <button bindtap="wxLocal1">获取我的位置</button>
+   <button bindtap="wxLocal1">请求配置</button>
    <button bindtap="wxLocal2">打开我的位置</button>
 
   <button bindtap="wxLocal3">朋友打开我的位置</button>

@@ -42,16 +42,40 @@ Page({
     }]
   },
   wxLocal1 () {
-    wx.getLocation({
-      type: 'wgs84',
+    const requestTask = wx.request({
+      url: 'https://lingyouhui.vip/main/v1/tb_tbk/optional',
+      data: {
+        q: '钢铁',
+        platform: '2',
+        adzone_id: 'A001',
+        has_coupon: 'true',
+        page_no: '1',
+        page_size: '10'
+      },
+      header: {
+        'content-type': 'application/json',
+        'token': '!tokens1'
+      },
       success(res) {
-        console.log('位置', res)
-        const latitude = res.latitude
-        const longitude = res.longitude
-        const speed = res.speed
-        const accuracy = res.accuracy
+        console.log(res.data)
       }
     })
+    requestTask.onHeadersReceived((headers) => {
+      headers.header.text = '头部测试文本';
+      
+      console.log(headers)
+      return headers;
+    }) // 取消请求任务
+    // wx.getLocation({
+    //   type: 'wgs84',
+    //   success(res) {
+    //     console.log('位置', res)
+    //     const latitude = res.latitude
+    //     const longitude = res.longitude
+    //     const speed = res.speed
+    //     const accuracy = res.accuracy
+    //   }
+    // })
   },
   wxLocal2 () {
     wx.chooseLocation({
