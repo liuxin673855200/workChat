@@ -1,8 +1,7 @@
 const utils = require('../utils/utils');
-
+const RequestApi=require('../servers/request.js')
 const {globalData} = getApp();
 const {Service: {Status, Conversation}} = globalData;
-
 const requestUserAuth = () => {
   return new Promise((resolve, reject) => {
     wx.getSetting({
@@ -22,15 +21,17 @@ const watchConversation = (context) => {
     context.setData({
       conversationList
     });
+    console.log(conversationList)
   });
 };
 
-const watchStatus = () => {
+const watchStatus = (token) => {
  Status.watch((status) => {
    if (status == 3) {
      wx.getUserInfo({
        success: (user) => {
-         Status.connect(user.userInfo);
+         console.log("token",token)
+         Status.connect(user.userInfo,token);
        }
      });
    }
@@ -39,18 +40,39 @@ const watchStatus = () => {
 
 const connect = (context) => {
   watchConversation(context);
-  watchStatus();
+  watchStatus(context.token);
   wx.getUserInfo({
     success: (user) => {
-      Status.connect(user.userInfo).then(() => {
-        console.log('connect successfully');
-      }, (error) => {
-        wx.showToast({
-          title: error.msg,
-          icon: 'none',
-          duration: 3000
+      // console.log(user.userInfo)
+      let userData={
+        nickname: user.userInfo.nickName,
+        portrait: user.userInfo.avatarUrl,
+        mobile: 17611410018,
+        openid: '123'
+      }
+      // console.log('userData', userData)
+      let newInfo = user.userInfo
+  
+      getUserToken(userData).then((res)=>{
+          // console.log("token的值为",res)
+        // newInfo.token =res
+        context.token=res
+        getConversationList(context.token).then((res)=>{
+          console.log(res)
+        })
+        Status.connect(newInfo, context.token).then(() => {
+          console.log('connect successfully');
+        }, (error) => {
+          console.log("connectError", error)
+          // wx.showToast({
+          //   title: "error",
+          //   icon: 'none',
+          //   duration: 3000
+          // })
         })
       })
+      console.log('newInfo', newInfo)
+  
     },
     fail: (error) => {
       console.log(error);
@@ -62,7 +84,41 @@ const connect = (context) => {
     }
   })
 };
-
+// liuxin 2019 5.13changed
+const getUserToken=(data)=>{
+  return new Promise(function(resolve,reject){
+    RequestApi.default('POST', 'chatssh', '/chat/get_user_info', data).then(res => {
+      // console.log(res.code)
+      if (res.code == 200) {
+        let token = res.data.token
+        wx.setStorage({
+          key: 'token',
+          data: token,
+          success: (res) => {
+            console.log(res)
+          }
+        })
+        resolve(token)
+      }
+    }).catch((error)=>{
+      reject(error)
+    })
+  })
+}
+const getConversationList=(token)=>{
+  return new Promise(function(resolve,reject){
+    RequestApi.default('POST', 'chatssh', '/chat_customer/pro_chat_list', { token: token }).then(res => {
+      console.log(res.code)
+      if (res.code == 200) {
+        // console.log(res.data)
+        resolve(res.data)
+      }
+    }).catch((error) => {
+        reject(error)
+    })  
+  })
+}
+//change End
 Page({
 
   /**
@@ -70,7 +126,8 @@ Page({
    */
   data: {
     hasUserAuth: true,
-    conversationList: []
+    conversationList: [],
+    token:""
   },
   /**
    * 生命周期函数--监听页面加载
@@ -116,6 +173,7 @@ Page({
     });
 
     let { conversationList} = this.data;
+    
     utils.map(conversationList, (conversation) => {
       if (isSame(conversation, item)){
         conversation.unReadCount = 0;
