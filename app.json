@@ -1,35 +1,14 @@
 {
   "pages": [
+    "pages/conversation/list",
     "pages/register/register",
     "pages/login/login",
-    "pages/conversation/list",
     "pages/conversation/chat"
     
   ],
   "window": {
     "navigationBarBackgroundColor": "#1BA3FC",
-    "navigationBarTitleText": "用车助手",
+    "navigationBarTitleText": "SealTalk",
     "navigationBarTextStyle": "white"
-  },
-  "tabBar": {
-    "list": [
-      {
-        "pagePath": "pages/conversation/list",
-        "text": "list"
-      },
-      {
-        "pagePath": "pages/login/login",
-        "text": "login"
-      },
-      {
-        "pagePath": "pages/register/register",
-        "text": "register"
-      }
-    ]
-  },
-  "permission": {
-    "scope.userLocation": {
-      "desc": "你的位置信息将用于小程序位置接口的效果展示"
-    }
   }
 }

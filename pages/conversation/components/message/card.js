@@ -14,7 +14,7 @@ Component({
   data: {
     cardType: 3,
     title:"【维修单】",
-    carNumber:"苏A12345",
+    carNumber:"苏A12348",
     carPic:""
   },
   methods:{

@@ -2,18 +2,13 @@
   <scroll-view class='rong-messages' bindtouchstart='hideKeyboard' scroll-y  bindscrolltoupper='getMoreMessages' scroll-into-view='U-{{toView}}' scroll-with-animation='{{true}}' >
     <Loading style='visibility:{{!isAllowScroll ? "visible" : "hidden"}}'></Loading>
     <WithoutMessage wx:if='{{!hasMore}}' id='message-notify-without'></WithoutMessage>
-    <Message wx:for="{{messageList}}" wx:key='{{message.uId}}' wx:for-item="message" message='{{message}}' id='U-{{message.uId}}' bindonplay='onPlayVoice' bindonplaymusic='onPlayMusic' bindopenMap='openMap' bindonmusicstop='onMusicStop' bindonpreviewimage='onPreviewImage' bindtootherpage="toOtherPage">
+    <Message wx:for="{{messageList}}" wx:key='{{message.uId}}' wx:for-item="message" message='{{message}}' id='U-{{message.uId}}' bindonplay='onPlayVoice' bindonplaymusic='onPlayMusic' bindonmusicstop='onMusicStop' bindonpreviewimage='onPreviewImage' bindtootherpage="toOtherPage">
     </Message>
   </scroll-view>
-<!-- 示例 -->
 
   <view wx:if='{{isRecording}}' class='rong-voice-recording'></view>
 
   <view class='rong-editor'>
-  <view class="rong-short-card">
-    <button class='btn-short' bindtap="showBanned">禁言</button>
-    <button class='btn-short' bindtap='showPhoneNumber'>联系商家</button>
-  </view>
     <view wx:if='{{!isShowKeyboard}}' class='rong-icon rong-editor-btn rong-editor-btn-voice' bindtap='showKeyboard'></view>
 
     <input wx:if='{{!isShowKeyboard}}' class='rong-editor-input' adjust-position='{{false}}' bindinput='onInput' bindfocus='onFocus' value='{{content}}' confirm-type='send' confirm-hold='{{true}}' bindconfirm='sendText' maxlength='-1'></input>
@@ -45,10 +40,6 @@
       <swiper-item>
         <view class='rong-editor-modules'>
           <view class='rong-editor-module rong-editor-module-image' bindtap='sendImage'></view>
-        </view> 
-
-        <view class='rong-editor-modules'>
-          <view class='rong-editor-module rong-editor-module-images' bindtap='sendMap'></view>
         </view>
 
         <view class='rong-editor-modules'>

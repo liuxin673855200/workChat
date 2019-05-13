@@ -11,7 +11,6 @@ const softKeyboardHeight = 210;
 
 const getToView = (context) => {
   let { messageList } = context.data;
-
   let index = messageList.length - 1;
   let message = messageList[index] || {};
   return message.uId || '';
@@ -68,6 +67,7 @@ const formatEmojis = () => {
 const getMessageList = (context, params) => {
   let {position} = params;
   return Message.getList(params).then((result) => {
+    console.log(result)
     let messages = result.messageList;
     let hasMore = result.hasMore;
 
@@ -363,7 +363,6 @@ const sendImage =  (context) => {
 };
 
 const sendMusic = (context) => {
-  console.log(context.data)
   let { content, type, targetId, messageList } = context.data;
   Message.sendMusic({
     type,
@@ -375,32 +374,6 @@ const sendMusic = (context) => {
       toView: message.uId
     });
   });
-};
-
-/** 发送当前地理位置 */
-const sendMap = (context) => {
-  let { content, type, targetId, messageList } = context.data;
-
-  wx.chooseLocation({
-    success(res) {
-      console.log('位置', res, '信息', {
-        type,
-        targetId,
-        content : res
-      })
-      Message.sendMap({
-        type,
-        targetId,
-        content : res
-      }).then(message => {
-        messageList.push(message);
-        context.setData({
-          messageList,
-          toView: message.uId
-        });
-      });
-    }
-  })
 };
 
 const playVoice = (context, event) => {
@@ -423,10 +396,6 @@ const playVoice = (context, event) => {
     playingVoice: voiceComponent
   });
 };
-
-const openMap = (context, event) => {
-  console.log(context, event)
-}
 
 const playMusic = (context, event) => {
   let newMusicComponent = event.detail;
@@ -526,9 +495,6 @@ Page({
   sendMusic: function () {
     sendMusic(this);
   },
-  sendMap: function(){
-    sendMap(this);
-  },
   showVoice: function(){
     showVoice(this);
   },
@@ -550,34 +516,34 @@ Page({
   // 以下是事件
   onLoad: function (query) {
     onLoad(this, query)
-
   },
-  onReady:function(){
+  //add新的消息类型
+  onReady: function () {
     console.log(this.data.messageList)
     var n = this.data.messageList.length;
-    let otherMessage={
-      content:{          url:"https://rongcloud-file.cn.ronghub.com/o_1chvbvdq7k…pQ8QscLxbNLehwhHySnX:94Vxq8iU9AKya7Wj1hkBW5uy4f8=", name: "My Heart Will Go On", author: "Céline Dion", poster: "https://rongcloud-image.cn.ronghub.com/FpNGSIJHoyx…DNvo3-sL_SO1fSUBKV3H:-H3FiDuwQ-gylVTi-nsQY9UdQf4=" },
-conversationType:1,
-      direction:"receiver",
-extra:undefined,
-isLocalMessage:undefined,
-messageDirection :2,
-messageId: "1_13334023",
-messageType:"CardMessage",
-messageUId:"BA19-LK4F-VAG7-24V8",
-name:"CardMessage",
-objectName :"seal:card",
-offLineMessage :true,
-pos :0,
-receiptResponse : undefined,
-receivedStatus :1,
-receivedTime:1554971685653,
+    let otherMessage = {
+      content: { url: "https://rongcloud-file.cn.ronghub.com/o_1chvbvdq7k…pQ8QscLxbNLehwhHySnX:94Vxq8iU9AKya7Wj1hkBW5uy4f8=", name: "My Heart Will Go On", author: "Céline Dion", poster: "https://rongcloud-image.cn.ronghub.com/FpNGSIJHoyx…DNvo3-sL_SO1fSUBKV3H:-H3FiDuwQ-gylVTi-nsQY9UdQf4=" },
+      conversationType: 1,
+      direction: "receiver",
+      extra: undefined,
+      isLocalMessage: undefined,
+      messageDirection: 2,
+      messageId: "1_13334023",
+      messageType: "CardMessage",
+      messageUId: "BA19-LK4F-VAG7-24V8",
+      name: "CardMessage",
+      objectName: "seal:card",
+      offLineMessage: true,
+      pos: 0,
+      receiptResponse: undefined,
+      receivedStatus: 1,
+      receivedTime: 1554971685653,
       sender: { name: "楚霸王", type: 1, token: "BjfDVKpFIT2i27xjGOqiwPdZTx7PdYUozREvTAnwRf9J3bvOZz…KR3HOQUIAYj4mK0J7Vr9B93xowypKpsaTNmACcCkEArZafw==", id: "FmkoLWc8R45zAocuB9JKNn", avatar: "https://rongcloud-image.cn.ronghub.com/o_1chv06qgdb3r1bo52sd14121kos2g.png?e=2147483647&token=CddrKW5AbOMQaDRwc3ReDNvo3-sL_SO1fSUBKV3H:D8XdePuWt2l_ocWPOciTv23A0ZM=" },
-senderUserId  : "FmkoLWc8R45zAocuB9JKNn",
-sentStatus :undefined,
-sentTime :1554713331506,
-targetId: "RrG9ip8kykDX8Ucb54o6RF",
-uId :"B9VG-HCEC-M1S5-J8RA",
+      senderUserId: "FmkoLWc8R45zAocuB9JKNn",
+      sentStatus: undefined,
+      sentTime: 1554713331506,
+      targetId: "RrG9ip8kykDX8Ucb54o6RF",
+      uId: "B9VG-HCEC-M1S5-J8RA",
     }
     console.log(n)
     let list = this.data.messageList
@@ -585,7 +551,7 @@ uId :"B9VG-HCEC-M1S5-J8RA",
     console.log(list)
     this.setData({
       messageList: list
-    },()=>{
+    }, () => {
       console.log(this.data.messageList[3])
     }
     )
@@ -610,14 +576,11 @@ uId :"B9VG-HCEC-M1S5-J8RA",
   onPlayMusic: function (event){
     playMusic(this, event);
   },
-  openMap: function (event){
-    openMap(this, event);
-  },
   onMusicStop: function(event){
     stopMusic(this, event);
   },
-  toOtherPage:function(event){
-    console.log(event,"跳转页面")
+  toOtherPage: function (event) {
+    console.log(event, "跳转页面")
   },  
   onPreviewImage: function(event){
     previewImage(this, event);
@@ -625,41 +588,5 @@ uId :"B9VG-HCEC-M1S5-J8RA",
   onHide: function(){
     hideKeyboard(this);
     stopPlayMusic(this);
-  },
-  // 4.15
-  showPhoneNumber:function(){
-    let phoneNumber ="17611410018";
-        wx.showModal({
-          title: '联系商家',
-          content: phoneNumber,
-          success(res) {
-            if (res.confirm) {
-              console.log('用户点击确定')
-              wx.makePhoneCall({
-                phoneNumber: phoneNumber// 仅为示例，并非真实的电话号码
-              })
-            } else if (res.cancel) {
-              console.log('用户点击取消')
-            }
-          }
-        })
-  },
-  showBanned:function(){
-    var that=this;
-    console.log(2);
-    var  banList = ['解除禁言','禁言7天', '禁言15天', '禁言30天'];
-    wx.showActionSheet({
-      itemList: banList,
-      success(res) {
-        console.log(res.tapIndex)
-      that.bannedOperatioin(res.tapIndex)
-      },
-      fail(res) {
-        console.log(res.errMsg)
-      }
-    })
-  },
-  bannedOperatioin:function(index){
-    console.log(index);
   }
 })

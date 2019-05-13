@@ -9,10 +9,11 @@
 		"postcss": true,
 		"minified": false,
 		"newFeature": true,
-		"autoAudits": false
+		"autoAudits": false,
+		"checkInvalidKey": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.1.1",
+	"libVersion": "2.6.6",
 	"appid": "wx7a842a98c6a24bc2",
 	"projectname": "rongcloud-miniapp",
 	"debugOptions": {

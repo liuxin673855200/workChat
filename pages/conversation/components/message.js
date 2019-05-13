@@ -19,10 +19,7 @@ Component({
     './message/voice': {
       type: 'child'
     },
-     './message/card': {
-      type: 'child'
-    },
-    './message/map': {
+       './message/card': {
       type: 'child'
     }
   },
@@ -30,6 +27,7 @@ Component({
    * 组件的初始数据
    */
   data: {
+    defaultAvatar:"https://rongcloud-file.cn.ronghub.com/o_1chvbvdq7k…pQ8QscLxbNLehwhHySnX:94Vxq8iU9AKya7Wj1hkBW5uy4f8="
   },
 
   /**
@@ -49,13 +47,9 @@ Component({
       let {detail} = event;
       this.triggerEvent('onpreviewimage', detail);
     },
-    toOtherPage:function(event){
-      console.log("message.js")
+    toOtherPage: function (event) {
+      // console.log("message.js")
       this.triggerEvent('tootherpage', event.detail)
-    },
-    openMap:function(event){
-      console.log("message.js")
-      this.triggerEvent('openMap', event.detail)
     }
   }
 })
